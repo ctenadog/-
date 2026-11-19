@@ -1,38 +1,52 @@
 # Rock & Load: Expanded Reclaimer Arsenal
 
-**Tagline:** Twelve new ways to make Hoxxes regret waking up.
+**Twelve new ways to make Hoxxes regret waking up.**
 
-**Concept:** A mixed-style weapon pack for Deep Rock Galactic: Rogue Core. The proposed first version contains twelve original Reclaimer weapon concepts spanning ballistic, industrial, chemical, elemental, and energy weapons. Each concept has a distinct primary fire, alternate fire, combat role, tradeoff, visual identity, and audio identity.
+A mixed-style weapon pack concept for **Deep Rock Galactic: Rogue Core**. The first planned release contains twelve original Reclaimer weapons across ballistic, industrial, chemical, elemental and energy families.
 
-**How it fits the game:** Players choose a Reclaimer Weapon as part of the mission loadout, then salvage additional equipment and weapons during stages. The mod is designed for the game's existing co-op PvE loop (1–4 players), not as a standalone game or a separate weapon-selection game mode.
-
-**First minute:** Pick one of the new weapons in the loadout, enter the first cave encounter, and test its primary and alternate fire against the opening enemy group.
+> **Status: design/tooling scaffold — not a playable mod yet.** No compiled Blueprint assets or `.pak` are included. See [PROJECT_STATUS.md](PROJECT_STATUS.md).
 
 ## Weapon roster
 
-1. Arc Conductor — chain-lightning carbine.
-2. Cryo Needle — precision cryogenic rifle.
-3. Rail Splitter — charged armor-piercing railgun.
-4. Rotary Shredder — spin-up rotary cannon.
-5. Rivet Storm — pneumatic rivet launcher with delayed detonation.
-6. Acid Injector — corrosive precision injector.
-7. Magnetar Disc — ricocheting magnetic disc launcher.
-8. Seismic Projector — stagger-focused shockwave weapon.
-9. Gravity Well Launcher — temporary enemy-pulling field.
-10. Thermal Lance — continuous heat beam.
-11. Magma Mortar — arcing thermal area-denial launcher.
-12. Bore-Drill Cannon — powered drill-head projectile.
+| # | Weapon | Combat identity |
+|---:|---|---|
+| 1 | Arc Conductor | Chain-lightning carbine and charged pulse |
+| 2 | Cryo Needle | Precision cryo darts and piercing ice shard |
+| 3 | Rail Splitter | Charged armor-piercing railgun |
+| 4 | Rotary Shredder | Spin-up rotary cannon with overdrive |
+| 5 | Rivet Storm | Pneumatic rivets with manual detonation |
+| 6 | Acid Injector | Corrosive precision injector and three-needle fan |
+| 7 | Magnetar Disc | Ricocheting magnetic disc with early recall |
+| 8 | Seismic Projector | Staggering shockwave and focused impact line |
+| 9 | Gravity Well Launcher | Enemy-pulling field and early implosion |
+| 10 | Thermal Lance | Continuous heat beam and vent burst |
+| 11 | Magma Mortar | Thermal area-denial shell and impact slug |
+| 12 | Bore-Drill Cannon | Piercing drill projectile and return pass |
 
-## Build and test status
+## First-minute loop
 
-This repository currently contains a **design specification only**, not a playable mod. Numeric weapon balance, exact Blueprint classes and data assets, weapon registration/unlock/salvage hooks, replicated behavior, meshes, animations, sounds, VFX, HUD assets, and Melty's one-click recipe remain unverified. No build or in-game test has been completed.
+Choose a weapon, enter the first cave encounter, and test its primary and alternate fire against the opening enemy group. The target game mode is the game's native co-op PvE loop (1–4 players); multiplayer behavior of this mod has not been tested.
 
-Existing community Blueprint/.pak mod-loading approaches and a separate workbench-choice mod have been identified during preliminary research. The workbench-choice mod does not itself add these twelve weapons. Do not bundle third-party mod files or assets without permission.
+## Project files
 
-## Credits, license, remix
+- [weapon_sheet.json](weapon_sheet.json) — source-of-truth concept data and first-pass stat targets.
+- [tools/validate_weapon_sheet.py](tools/validate_weapon_sheet.py) — no-dependency design-sheet validator.
+- [tools/collect_game_manifest.ps1](tools/collect_game_manifest.ps1) — read-only Windows helper that finds Rogue Core's Steam install and records build/executable/PAK metadata. It does not copy game assets.
+- [docs/IMPLEMENTATION.md](docs/IMPLEMENTATION.md) — integration route, first playable milestone and build gates.
+- [docs/RESEARCH_NOTES.md](docs/RESEARCH_NOTES.md) — external technical references.
 
-All weapon names and concepts in this draft are original proposals for this project. No third-party weapon assets are included. Final code/art/audio credits, license, and remix permissions are pending the creator's decision.
+## Validation
 
-## Project status
+```powershell
+python tools/validate_weapon_sheet.py weapon_sheet.json
+```
 
-See [PROJECT_STATUS.md](PROJECT_STATUS.md) for the implementation checklist and [weapon_sheet.json](weapon_sheet.json) for the source-of-truth concept data.
+For a strict check that refuses to clear implementation while game paths/hooks remain unresolved:
+
+```powershell
+python tools/validate_weapon_sheet.py weapon_sheet.json --require-integration
+```
+
+## Credits and permissions
+
+All weapon names and gameplay concepts in this draft are original proposals. No third-party game assets, loader binaries or interface .uasset files are included. Final code/art/audio license and remix permissions remain to be decided by the creator. Third-party loader/interface files must be obtained from their publishers and redistributed only where their permissions explicitly allow it.
