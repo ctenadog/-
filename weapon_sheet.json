@@ -1,193 +1,382 @@
 {
+  "schema_version": 1,
   "project": {
     "title": "Rock & Load: Expanded Reclaimer Arsenal",
     "game": "Deep Rock Galactic: Rogue Core",
-    "project_type": "gameplay mod concept; playable implementation not yet built",
     "host_game_required": true,
-    "intended_mode": "co-op against the game's enemies",
-    "supported_party_size_target": "1-4 players (game's native range; mod replication still requires testing)",
-    "first_minute": "Choose one of the added Reclaimer weapons in the loadout, enter the first cave encounter, and test its primary and alternate fire against the opening enemy group.",
-    "scope_v1": "12 original Reclaimer weapon concepts across ballistic, industrial, elemental, and energy families.",
-    "design_status": "concept sheet; numeric balance and game hooks intentionally left unverified",
-    "source_of_truth": "This file is the concept source of truth. Change it before implementation when a design decision changes."
+    "mode": "co-op PvE",
+    "party_size_target": "1-4 (native game range; mod replication not tested)",
+    "release_scope": "12 new weapon concepts across ballistic, industrial, chemical, elemental and energy families",
+    "first_minute": "Choose one new Reclaimer weapon, enter the first cave encounter, then test its primary and alternate fire against the opening enemy group.",
+    "balance_status": "prototype_targets_only",
+    "balance_note": "All numeric values are initial design targets, not measured or balanced against the current live game. Rebalance after inspecting the installed build and comparing vanilla weapon stats.",
+    "integration_status": "blocked_pending_local_game_inspection"
   },
   "weapons": [
     {
       "id": "arc_conductor",
       "name": "Arc Conductor",
       "family": "energy",
-      "role": "chain-damage / crowd control",
-      "primary_fire": "A sustained electrical bolt that jumps between nearby enemies after a hit.",
-      "alternate_fire": "Discharge the capacitor in a short-range pulse; the pulse consumes stored charge and briefly overloads connected targets.",
-      "signature_tradeoff": "Strong against clustered enemies; weaker against isolated targets and requires charge management.",
-      "visual_identity": "Industrial coil assembly, insulated grips, exposed copper busbars, blue-white arcs.",
+      "role": "chain damage / crowd control",
+      "damage_type": "electric",
+      "primary_fire": "Rapid electrical bolts. A hit jumps to nearby enemies with reduced damage.",
+      "alternate_fire": "Spend stored charge on a short-range electrical pulse that overloads nearby targets.",
+      "prototype_stats": {
+        "damage_per_hit": 8,
+        "fire_rate_per_second": 8,
+        "magazine": 48,
+        "reserve_ammo": 240,
+        "reload_seconds": 2.3
+      },
+      "special_rules": {
+        "chain_targets": 2,
+        "chain_damage_multiplier": 0.55,
+        "alt_fire_charge_cost": 24
+      },
+      "tradeoff": "Strong against clustered enemies; inefficient against isolated targets and requires charge management.",
+      "visual_identity": "Industrial coil assembly, insulated grips, copper busbars and blue-white electrical arcs.",
       "audio_identity": "Rising transformer hum followed by sharp electrical snaps.",
-      "numeric_balance": "unverified against the current weapon roster",
-      "implementation_hook": "unverified"
+      "implementation": {
+        "target_game_asset": null,
+        "weapon_registration_hook": null,
+        "replication": "unknown",
+        "status": "unmapped"
+      }
     },
     {
       "id": "cryo_needle",
       "name": "Cryo Needle",
-      "family": "elemental / precision",
-      "role": "precision freeze / setup for team damage",
-      "primary_fire": "Fire narrow cryogenic darts that build frost on a single target.",
-      "alternate_fire": "Spend accumulated pressure for a piercing ice shard that deals bonus damage to frozen targets.",
-      "signature_tradeoff": "Rewards accurate follow-up shots; less effective when spraying into a crowd.",
-      "visual_identity": "Compact pressure rifle with a frost reservoir, insulated barrel jacket, and pale cyan vents.",
-      "audio_identity": "Pneumatic hiss, brittle ice crack, low pressure release.",
-      "numeric_balance": "unverified against the current weapon roster",
-      "implementation_hook": "unverified"
+      "family": "elemental_precision",
+      "role": "precision freeze / team setup",
+      "damage_type": "kinetic_cold",
+      "primary_fire": "Fire narrow cryogenic darts that build frost on one target.",
+      "alternate_fire": "Spend pressure to fire a piercing ice shard that deals bonus damage to frozen targets.",
+      "prototype_stats": {
+        "damage_per_hit": 16,
+        "fire_rate_per_second": 3.5,
+        "magazine": 12,
+        "reserve_ammo": 72,
+        "reload_seconds": 1.8
+      },
+      "special_rules": {
+        "frost_per_hit": 18,
+        "alt_fire_damage": 45,
+        "alt_fire_ammo_cost": 2
+      },
+      "tradeoff": "Rewards precision and follow-up shots; weaker when spraying into a crowd.",
+      "visual_identity": "Pressure rifle with frost reservoir, insulated barrel jacket and pale cyan vents.",
+      "audio_identity": "Pneumatic hiss, brittle ice crack and low pressure release.",
+      "implementation": {
+        "target_game_asset": null,
+        "weapon_registration_hook": null,
+        "replication": "unknown",
+        "status": "unmapped"
+      }
     },
     {
       "id": "rail_splitter",
       "name": "Rail Splitter",
-      "family": "ballistic / electromagnetic",
+      "family": "electromagnetic_ballistic",
       "role": "long-range armor penetration",
+      "damage_type": "kinetic_piercing",
       "primary_fire": "Charge and launch a dense slug that pierces a line of enemies.",
-      "alternate_fire": "A quick low-charge shot with reduced penetration for emergency close-range use.",
-      "signature_tradeoff": "High impact and line penetration in exchange for deliberate charge timing and scarce ammunition.",
-      "visual_identity": "Long magnetic rails, warning markings, heavy rear capacitor, recoil braces.",
+      "alternate_fire": "A quick low-charge shot with reduced damage and penetration.",
+      "prototype_stats": {
+        "damage_per_hit": 105,
+        "fire_rate_per_second": 0.8,
+        "magazine": 6,
+        "reserve_ammo": 30,
+        "reload_seconds": 3.1
+      },
+      "special_rules": {
+        "charge_seconds": 1.1,
+        "pierce_targets": 4,
+        "pierce_damage_multiplier": 0.8,
+        "alt_fire_damage_multiplier": 0.45
+      },
+      "tradeoff": "High impact and line penetration in exchange for deliberate charge timing and scarce ammunition.",
+      "visual_identity": "Long magnetic rails, warning markings, heavy rear capacitor and recoil braces.",
       "audio_identity": "Capacitor whine followed by a sharp metallic rail report.",
-      "numeric_balance": "unverified against the current weapon roster",
-      "implementation_hook": "unverified"
+      "implementation": {
+        "target_game_asset": null,
+        "weapon_registration_hook": null,
+        "replication": "unknown",
+        "status": "unmapped"
+      }
     },
     {
       "id": "rotary_shredder",
       "name": "Rotary Shredder",
-      "family": "ballistic / heavy",
+      "family": "ballistic_heavy",
       "role": "sustained suppression",
-      "primary_fire": "A belt-fed rotary cannon with a spin-up and sustained firing cycle.",
-      "alternate_fire": "Lock the barrel assembly in an overdrive mode for higher output while rapidly building heat.",
-      "signature_tradeoff": "Dominates sustained engagements but is heavy, loud, and vulnerable during spin-up or cooling.",
-      "visual_identity": "Oversized rotary barrel cluster, feed belt, heat fins, chunky mining-grade housing.",
-      "audio_identity": "Mechanical spin-up, deep cyclic gunfire, cooling ticks.",
-      "numeric_balance": "unverified against the current weapon roster",
-      "implementation_hook": "unverified"
+      "damage_type": "kinetic",
+      "primary_fire": "Belt-fed rotary cannon with a short spin-up and sustained firing cycle.",
+      "alternate_fire": "Overdrive the barrel assembly for greater output while rapidly building heat.",
+      "prototype_stats": {
+        "damage_per_hit": 7.5,
+        "fire_rate_per_second": 14,
+        "magazine": 175,
+        "reserve_ammo": 525,
+        "reload_seconds": 4
+      },
+      "special_rules": {
+        "spin_up_seconds": 0.7,
+        "overdrive_damage_multiplier": 1.35,
+        "overdrive_heat_per_second": 24
+      },
+      "tradeoff": "Excellent sustained pressure but heavy, loud and vulnerable during spin-up or cooling.",
+      "visual_identity": "Oversized rotary barrel cluster, feed belt, heat fins and mining-grade housing.",
+      "audio_identity": "Mechanical spin-up, deep cyclic gunfire and cooling ticks.",
+      "implementation": {
+        "target_game_asset": null,
+        "weapon_registration_hook": null,
+        "replication": "unknown",
+        "status": "unmapped"
+      }
     },
     {
       "id": "rivet_storm",
       "name": "Rivet Storm",
-      "family": "industrial / pneumatic",
-      "role": "burst damage / delayed setup",
-      "primary_fire": "Launch short bursts of heavy rivets that lodge in enemies or cave surfaces.",
-      "alternate_fire": "Trigger lodged rivets to detonate in a small controlled burst.",
-      "signature_tradeoff": "Excellent when the player plans a burst sequence; weaker when forced to reposition constantly.",
-      "visual_identity": "Pneumatic piston block, pressure gauge, rivet hopper, scratched yellow safety panels.",
-      "audio_identity": "Air compressor thump, rapid metal impacts, compact detonation.",
-      "numeric_balance": "unverified against the current weapon roster",
-      "implementation_hook": "unverified"
+      "family": "industrial_pneumatic",
+      "role": "burst damage / delayed detonation",
+      "damage_type": "kinetic_explosive",
+      "primary_fire": "Launch heavy rivets that lodge in enemies or cave surfaces.",
+      "alternate_fire": "Trigger lodged rivets for a compact controlled detonation.",
+      "prototype_stats": {
+        "damage_per_hit": 42,
+        "fire_rate_per_second": 2.8,
+        "magazine": 14,
+        "reserve_ammo": 70,
+        "reload_seconds": 2.6
+      },
+      "special_rules": {
+        "detonation_damage": 25,
+        "max_rivets_per_target": 3,
+        "detonation_radius_cm": 250
+      },
+      "tradeoff": "Excellent when the player plans a burst sequence; weaker while constantly repositioning.",
+      "visual_identity": "Pneumatic piston block, pressure gauge, rivet hopper and scratched yellow safety panels.",
+      "audio_identity": "Air-compressor thump, rapid metal impacts and compact detonation.",
+      "implementation": {
+        "target_game_asset": null,
+        "weapon_registration_hook": null,
+        "replication": "unknown",
+        "status": "unmapped"
+      }
     },
     {
       "id": "acid_injector",
       "name": "Acid Injector",
-      "family": "chemical / precision",
+      "family": "chemical_precision",
       "role": "single-target debuff",
-      "primary_fire": "Inject a corrosive needle into a target, applying a focused armor-corrosion effect over time.",
-      "alternate_fire": "Release a short fan of smaller needles to spread a weaker corrosion effect across several targets.",
-      "signature_tradeoff": "Improves the whole team's damage against durable targets but has modest immediate burst damage.",
-      "visual_identity": "Sealed chemical canister, reinforced injection chamber, hazard labels, green pressure windows.",
-      "audio_identity": "Needle-launch snap, bubbling chemical hiss.",
-      "numeric_balance": "unverified against the current weapon roster",
-      "implementation_hook": "unverified"
+      "damage_type": "kinetic_corrosive",
+      "primary_fire": "Inject a corrosive needle that weakens target armor over time.",
+      "alternate_fire": "Release a three-needle fan that spreads a weaker corrosion effect.",
+      "prototype_stats": {
+        "damage_per_hit": 14,
+        "fire_rate_per_second": 3,
+        "magazine": 12,
+        "reserve_ammo": 72,
+        "reload_seconds": 2
+      },
+      "special_rules": {
+        "corrosion_damage_per_second": 10,
+        "corrosion_duration_seconds": 3.5,
+        "alt_projectiles": 3,
+        "alt_damage_multiplier": 0.5
+      },
+      "tradeoff": "Improves squad damage against durable targets but has modest immediate burst damage.",
+      "visual_identity": "Sealed chemical canister, reinforced injection chamber, hazard labels and green pressure windows.",
+      "audio_identity": "Needle-launch snap and bubbling chemical hiss.",
+      "implementation": {
+        "target_game_asset": null,
+        "weapon_registration_hook": null,
+        "replication": "unknown",
+        "status": "unmapped"
+      }
     },
     {
       "id": "magnetar_disc",
       "name": "Magnetar Disc",
-      "family": "industrial / magnetic",
-      "role": "ricochet / return path damage",
-      "primary_fire": "Launch a spinning magnetic disc that ricochets between enemies and returns to the wielder.",
-      "alternate_fire": "Recall the disc early to alter its return path and strike enemies again.",
-      "signature_tradeoff": "Can hit several targets on a planned path, but misses and poor positioning waste the throw window.",
-      "visual_identity": "Thick steel disc, magnetic rim, warning LEDs, rugged wrist-mounted return receiver.",
-      "audio_identity": "High-pitched spin, metallic ricochets, magnetic catch clack.",
-      "numeric_balance": "unverified against the current weapon roster",
-      "implementation_hook": "unverified"
+      "family": "industrial_magnetic",
+      "role": "ricochet / returning projectile",
+      "damage_type": "kinetic_magnetic",
+      "primary_fire": "Launch a spinning magnetic disc that ricochets between enemies and returns.",
+      "alternate_fire": "Recall the disc early to alter its return path and strike targets again.",
+      "prototype_stats": {
+        "damage_per_hit": 28,
+        "fire_rate_per_second": 0.8,
+        "magazine": 1,
+        "reserve_ammo": 12,
+        "reload_seconds": 1.25
+      },
+      "special_rules": {
+        "max_ricochets": 4,
+        "return_damage_multiplier": 0.5,
+        "alt_recall_enabled": true
+      },
+      "tradeoff": "Can hit several targets on a planned path, but poor positioning wastes the throw window.",
+      "visual_identity": "Thick steel disc, magnetic rim, warning LEDs and rugged wrist-mounted return receiver.",
+      "audio_identity": "High-pitched spin, metallic ricochets and magnetic catch clack.",
+      "implementation": {
+        "target_game_asset": null,
+        "weapon_registration_hook": null,
+        "replication": "unknown",
+        "status": "unmapped"
+      }
     },
     {
       "id": "seismic_projector",
       "name": "Seismic Projector",
-      "family": "industrial / kinetic",
+      "family": "industrial_kinetic",
       "role": "short-range stagger / crowd control",
+      "damage_type": "kinetic_shockwave",
       "primary_fire": "Emit a forward ground-hugging shockwave that staggers enemies in a cone.",
-      "alternate_fire": "Compress the wave into a narrow, longer-reaching impact line with less width.",
-      "signature_tradeoff": "Creates breathing room for the squad but loses effectiveness at long range and against stagger-resistant targets.",
-      "visual_identity": "Twin counter-rotating impact drums, reinforced muzzle plates, vibration dampers.",
+      "alternate_fire": "Compress the wave into a narrow, longer-reaching impact line.",
+      "prototype_stats": {
+        "damage_per_hit": 32,
+        "fire_rate_per_second": 0.8,
+        "magazine": 5,
+        "reserve_ammo": 25,
+        "reload_seconds": 2.8
+      },
+      "special_rules": {
+        "stagger_seconds": 0.9,
+        "alt_damage": 50,
+        "primary_width_degrees": 70
+      },
+      "tradeoff": "Creates breathing room for the squad but loses effectiveness at long range.",
+      "visual_identity": "Twin counter-rotating impact drums, reinforced muzzle plates and vibration dampers.",
       "audio_identity": "Low concussive thump with a rattling mechanical tail.",
-      "numeric_balance": "unverified against the current weapon roster",
-      "implementation_hook": "unverified"
+      "implementation": {
+        "target_game_asset": null,
+        "weapon_registration_hook": null,
+        "replication": "unknown",
+        "status": "unmapped"
+      }
     },
     {
       "id": "gravity_well",
       "name": "Gravity Well Launcher",
-      "family": "energy / control",
+      "family": "energy_control",
       "role": "grouping / area setup",
-      "primary_fire": "Launch a slow gravitic charge that creates a brief pull field, drawing nearby small enemies toward its center.",
-      "alternate_fire": "Manually collapse the field early in a compact implosion.",
-      "signature_tradeoff": "Sets up team area damage and interrupts movement, but deals limited direct damage before collapse.",
-      "visual_identity": "Heavy containment cage, floating inner core, gravity warning dials, violet distortion lens.",
-      "audio_identity": "Deep spatial hum, rising pressure tone, muted implosion.",
-      "numeric_balance": "unverified against the current weapon roster",
-      "implementation_hook": "unverified"
+      "damage_type": "gravitic",
+      "primary_fire": "Launch a gravitic charge that briefly pulls nearby small enemies toward its center.",
+      "alternate_fire": "Collapse the field early in a compact implosion.",
+      "prototype_stats": {
+        "damage_per_hit": 12,
+        "fire_rate_per_second": 0.5,
+        "magazine": 2,
+        "reserve_ammo": 10,
+        "reload_seconds": 3
+      },
+      "special_rules": {
+        "field_radius_cm": 450,
+        "field_duration_seconds": 2.2,
+        "collapse_damage": 45,
+        "pull_strength": "medium; small enemies only"
+      },
+      "tradeoff": "Sets up team area damage and interrupts movement but deals limited direct damage before collapse.",
+      "visual_identity": "Heavy containment cage, floating inner core, gravity warning dials and violet distortion lens.",
+      "audio_identity": "Deep spatial hum, rising pressure tone and muted implosion.",
+      "implementation": {
+        "target_game_asset": null,
+        "weapon_registration_hook": null,
+        "replication": "unknown",
+        "status": "unmapped"
+      }
     },
     {
       "id": "thermal_lance",
       "name": "Thermal Lance",
-      "family": "energy / beam",
+      "family": "energy_beam",
       "role": "continuous precision damage",
+      "damage_type": "thermal",
       "primary_fire": "Project a continuous heat beam that builds temperature on the target and progressively weakens armor.",
-      "alternate_fire": "Vent accumulated heat in a short forward flare, forcing a cooldown before the beam can resume.",
-      "signature_tradeoff": "Rewards tracking one priority target; overheating interrupts sustained damage.",
-      "visual_identity": "Industrial beam emitter, ceramic cooling collars, bright amber core, heavy heat sinks.",
+      "alternate_fire": "Vent accumulated heat in a short forward flare, forcing cooldown.",
+      "prototype_stats": {
+        "damage_per_hit": 12,
+        "fire_rate_per_second": 4,
+        "magazine": 120,
+        "reserve_ammo": 0,
+        "reload_seconds": 2.4
+      },
+      "special_rules": {
+        "tick_interval_seconds": 0.25,
+        "heat_per_second": 25,
+        "overheat_at": 100,
+        "vent_damage": 35
+      },
+      "tradeoff": "Rewards tracking one priority target; overheating interrupts sustained damage.",
+      "visual_identity": "Industrial beam emitter, ceramic cooling collars, amber core and heavy heat sinks.",
       "audio_identity": "Steady electrical whine that rises with heat, then a sharp vent hiss.",
-      "numeric_balance": "unverified against the current weapon roster",
-      "implementation_hook": "unverified"
+      "implementation": {
+        "target_game_asset": null,
+        "weapon_registration_hook": null,
+        "replication": "unknown",
+        "status": "unmapped"
+      }
     },
     {
       "id": "magma_mortar",
       "name": "Magma Mortar",
-      "family": "elemental / explosive",
+      "family": "elemental_explosive",
       "role": "area denial",
+      "damage_type": "thermal_explosive",
       "primary_fire": "Lob a slow thermal shell that bursts on impact and leaves a brief hot zone.",
-      "alternate_fire": "Compress the payload into a direct-impact slug with a smaller blast and stronger single-target hit.",
-      "signature_tradeoff": "Controls chokepoints and groups of enemies but has a slow projectile and limited ammunition.",
-      "visual_identity": "Short-barrel pressure mortar, ceramic shell rack, heat-shielded grips, orange vents.",
-      "audio_identity": "Heavy launch thump, molten splash, cooling crackle.",
-      "numeric_balance": "unverified against the current weapon roster",
-      "implementation_hook": "unverified"
+      "alternate_fire": "Compress the payload into a direct-impact slug with a smaller blast and stronger direct hit.",
+      "prototype_stats": {
+        "damage_per_hit": 72,
+        "fire_rate_per_second": 1,
+        "magazine": 4,
+        "reserve_ammo": 24,
+        "reload_seconds": 3.4
+      },
+      "special_rules": {
+        "splash_damage": 35,
+        "burn_damage_per_second": 8,
+        "burn_duration_seconds": 3,
+        "alt_direct_multiplier": 1.35
+      },
+      "tradeoff": "Controls chokepoints and groups but has slow projectiles and limited ammunition.",
+      "visual_identity": "Short-barrel pressure mortar, ceramic shell rack, heat-shielded grips and orange vents.",
+      "audio_identity": "Heavy launch thump, molten splash and cooling crackle.",
+      "implementation": {
+        "target_game_asset": null,
+        "weapon_registration_hook": null,
+        "replication": "unknown",
+        "status": "unmapped"
+      }
     },
     {
       "id": "bore_drill_cannon",
       "name": "Bore-Drill Cannon",
-      "family": "industrial / heavy projectile",
-      "role": "line breakthrough / heavy target damage",
+      "family": "industrial_heavy_projectile",
+      "role": "line breakthrough / heavy-target damage",
+      "damage_type": "kinetic_piercing",
       "primary_fire": "Launch a powered drill head that bores through a line of enemies before losing momentum.",
       "alternate_fire": "Reverse the drill head early, pulling it back through the same corridor for a second pass.",
-      "signature_tradeoff": "Rewards lining up targets and controlling corridors; performs poorly when enemies surround the player.",
-      "visual_identity": "Oversized mining drill cartridge, exposed drive gears, hydraulic braces, striped hazard shell.",
-      "audio_identity": "Hydraulic kick, aggressive drilling grind, reverse motor whirr.",
-      "numeric_balance": "unverified against the current weapon roster",
-      "implementation_hook": "unverified"
+      "prototype_stats": {
+        "damage_per_hit": 65,
+        "fire_rate_per_second": 1.1,
+        "magazine": 6,
+        "reserve_ammo": 30,
+        "reload_seconds": 3
+      },
+      "special_rules": {
+        "pierce_targets": 3,
+        "secondary_hit_damage": 20,
+        "alt_return_damage_multiplier": 0.6
+      },
+      "tradeoff": "Rewards lining up targets and controlling corridors; performs poorly when enemies surround the player.",
+      "visual_identity": "Oversized mining drill cartridge, exposed drive gears, hydraulic braces and striped hazard shell.",
+      "audio_identity": "Hydraulic kick, aggressive drilling grind and reverse motor whirr.",
+      "implementation": {
+        "target_game_asset": null,
+        "weapon_registration_hook": null,
+        "replication": "unknown",
+        "status": "unmapped"
+      }
     }
-  ],
-  "implementation_preflight": {
-    "status": "blocked_pending_game_inspection_and_Melty_access",
-    "verified_game_facts": [
-      "Rogue Core supports 1-4 player co-op.",
-      "A mission starts with choosing a Phase Suit and Reclaimer Weapon.",
-      "Weapons and equipment can be salvaged during stages.",
-      "Community Blueprint mods and .pak-based mod loading exist for Rogue Core."
-    ],
-    "unverified_cells_before_any_playable_build": [
-      "Current installed game build and Unreal Engine project compatibility",
-      "Blueprint mod loader required by the target build and whether Melty can install it automatically",
-      "Exact Reclaimer weapon data assets and registration hooks",
-      "Weapon unlock and salvage pool integration hooks",
-      "Replicated firing, projectile, status effect, and hit registration behavior for host and clients",
-      "Weapon meshes, first-person animations, equip animations, sounds, particles, and HUD icons",
-      "Numeric damage, magazine size, reserve ammo, reload time, heat, charge time, and upgrade compatibility",
-      "Melty recipe validation, one-click installation, and automated test mode"
-    ],
-    "build_allowed": false,
-    "reason": "No installed game files or Melty publishing tools are accessible in this chat session; implementation hooks and multiplayer behavior have not been inspected or tested."
-  }
+  ]
 }
