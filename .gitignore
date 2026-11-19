@@ -1,4 +1,4 @@
-# Unreal Engine / mod build output
+# Unreal build outputs
 Binaries/
 Intermediate/
 Saved/
@@ -13,6 +13,7 @@ DerivedDataCache/
 .DS_Store
 Thumbs.db
 
-# Temporary files
-*.tmp
+# Local game manifests and diagnostics
+roguecore-manifest.json
 *.log
+*.tmp
