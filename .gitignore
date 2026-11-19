@@ -1,0 +1,18 @@
+# Unreal Engine / mod build output
+Binaries/
+Intermediate/
+Saved/
+DerivedDataCache/
+*.pak
+*.utoc
+*.ucas
+
+# Local editor / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.log
