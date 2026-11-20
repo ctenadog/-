@@ -31,3 +31,10 @@ Private local path, machine-specific component details, and executable hashes ar
 ## Current conclusion
 
 The local game version is identified. The game content archive itself was not supplied (and must not be uploaded here). Before compiling a gameplay mod, identify the exact compatible mod loader, the Unreal Editor/build tools, and real Reclaimer item classes/registration hooks. The build is not yet cleared.
+
+
+## Loader compatibility checked 2026-11-20
+- RCMM 1.1.2 was last updated 10 June 2026; its 5 November 2026 pinned comment says it needs an update for Update 3. The user's local build is Update 3.04, so RCMM compatibility is not assumed.
+- Mod Hub v1 is described as a Blueprint mod loader, but its Nexus permissions prohibit uploading the Mod Hub file to other sites and require permission for modification/asset use. We will not bundle its files without permission.
+- Mod Hub's Blueprint loading approach is documented for mods that do not replace existing game assets. Whether it can register new `ItemData` entries and add them to the real Reclaimer selection flow is still unverified.
+- The local Paks inventory contains only the main game PAK; no Mod Hub or RCMM PAK was detected.
