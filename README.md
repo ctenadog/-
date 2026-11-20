@@ -61,3 +61,10 @@ The user's diagnostic identifies build `26783375` / `Live-CL-165890` and the mai
 - The public Mod Hub page lists version 1, last updated 21 May 2026. It describes loading Blueprint mods from the Paks folder, but the page's permissions prohibit uploading the Mod Hub file to other sites and require permission before modifying or using its assets. Do not bundle it in this project or a Melty release without explicit permission: https://www.nexusmods.com/deeprockgalacticroguecore/mods/3
 - Mod Hub says the framework handles Blueprint mods that do not replace existing game assets. Whether that mechanism can safely register custom `ItemData` weapons into Rogue Core's Asset Manager and Reclaimer selection flow remains unverified.
 - User's local scan found no loader file in the Paks folder. This means neither Mod Hub nor RCMM was detected by that scan.
+
+
+## Loader compatibility update (checked 2026-11-20)
+- The public RogueCore Mod Manager page still lists v1.1.2, last updated 10 June 2026. Its 5 November 2026 sticky post says it requires an update for Update 3. It is not a viable assumed loader for local build 26783375 until an Update 3-compatible release is confirmed: https://www.nexusmods.com/deeprockgalacticroguecore/mods/6?tab=posts
+- The public Mod Hub page lists version 1, last updated 21 May 2026. It describes loading Blueprint mods from the Paks folder, but the page's permissions prohibit uploading the Mod Hub file to other sites and require permission before modifying or using its assets. Do not bundle it in this project or a Melty release without explicit permission: https://www.nexusmods.com/deeprockgalacticroguecore/mods/3
+- Mod Hub says the framework handles Blueprint mods that do not replace existing game assets. Whether that mechanism can safely register custom `ItemData` weapons into Rogue Core's Asset Manager and Reclaimer selection flow remains unverified.
+- User's local scan found no loader file in the Paks folder. This means neither Mod Hub nor RCMM was detected by that scan.
