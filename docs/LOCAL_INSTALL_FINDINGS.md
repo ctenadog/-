@@ -45,3 +45,11 @@ The local game version is identified. The game content archive itself was not su
 - Mod Hub v1 is described as a Blueprint mod loader, but its Nexus permissions prohibit uploading the Mod Hub file to other sites and require permission for modification/asset use. We will not bundle its files without permission.
 - Mod Hub's Blueprint loading approach is documented for mods that do not replace existing game assets. Whether it can register new `ItemData` entries and add them to the real Reclaimer selection flow is still unverified.
 - The local Paks inventory contains only the main game PAK; no Mod Hub or RCMM PAK was detected.
+
+
+## Unreal Engine installation check (user ran second PowerShell probe)
+The probe returned `NO_UNREAL_ENGINE_IN_EPIC_MANIFESTS`. This means no engine installation was found in the scanned Epic Games Launcher manifests; a custom/manual installation outside those manifests has not been exhaustively ruled out. The earlier scan also checked several common folders and the Unreal Engine Build registry keys without finding `UnrealEditor.exe` or `UnrealPak.exe`.
+
+Public technical reference identifies Rogue Core's engine build as Unreal Engine 5.6.1 (verified 2026-11-14): https://www.pcgamingwiki.com/wiki/Deep_Rock_Galactic:_Rogue_Core. Prefer the matching 5.6.1 installation rather than creating the project in a later engine version.
+
+Epic's installation guide says older engine versions can be selected from the version dropdown on the Unreal Engine Library tile: https://dev.epicgames.com/documentation/en-us/unreal-engine/install-unreal-engine. Epic's current recommended UE5 hardware includes 32 GB RAM and 8 GB or more graphics RAM: https://dev.epicgames.com/documentation/unreal-engine/hardware-and-software-specifications-for-unreal-engine. The user report lists approximately 11.8 GB system RAM and an RTX 2060 SUPER; the GPU memory class is sufficient for the recommendation, but available RAM is well below Epic's current recommended amount and editor performance may be constrained.
