@@ -28,3 +28,15 @@
 - [ ] Validate the Melty one-click recipe and complete release test
 
 **Current state:** design and tooling scaffold only. No compiled Blueprint assets, .pak, or playable build exists yet. The current session cannot access the user's installed game directory, and Melty's MCP endpoint was unreachable from the execution environment (DNS lookup failed). Do not describe the project as a working mod until the build and tests above pass.
+
+
+## Local machine report (2026-11-20)
+- [x] Identified local Steam build: 26783375
+- [x] Identified executable CL: Live-CL-165890
+- [x] Confirmed the report lists the main RogueCore-Windows.pak
+- [ ] Correct the malformed package CSV / collect the missing game-log tail
+- [ ] Check for Unreal Editor 5.6.1 and UnrealPak tool on the user's PC
+- [ ] Confirm a loader compatible with Update 3 and compatible with Melty one-click distribution
+- [ ] Inspect real ItemData, Reclaimer weapon classes, unlock collections, and replication hooks
+
+See [LOCAL_INSTALL_FINDINGS.md](docs/LOCAL_INSTALL_FINDINGS.md) and [WEAPON_INTEGRATION.md](docs/WEAPON_INTEGRATION.md).
