@@ -40,3 +40,11 @@
 - [ ] Inspect real ItemData, Reclaimer weapon classes, unlock collections, and replication hooks
 
 See [LOCAL_INSTALL_FINDINGS.md](docs/LOCAL_INSTALL_FINDINGS.md) and [WEAPON_INTEGRATION.md](docs/WEAPON_INTEGRATION.md).
+
+
+## Loader selection (2026-11-20)
+- [x] Checked RCMM update status: public v1.1.2 page has a 2026-11-05 pinned note saying Update 3 requires an update
+- [x] Checked Mod Hub redistribution permissions: cannot rehost or modify its files without permission
+- [ ] Find an Update 3-compatible loader or a self-contained, permitted alternative suitable for Melty one-click install
+- [ ] Confirm whether Blueprint loader can register custom ItemData into the Reclaimer loadout/salvage system
+- [ ] Check Epic Launcher manifests / custom Unreal Engine installation paths; initial scan was limited to common paths
