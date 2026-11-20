@@ -10,7 +10,30 @@
     "first_minute": "Choose one new Reclaimer weapon, enter the first cave encounter, then test its primary and alternate fire against the opening enemy group.",
     "balance_status": "prototype_targets_only",
     "balance_note": "All numeric values are initial design targets, not measured or balanced against the current live game. Rebalance after inspecting the installed build and comparing vanilla weapon stats.",
-    "integration_status": "blocked_pending_local_game_inspection"
+    "integration_status": "blocked_pending_local_game_inspection",
+    "verified_local_build": {
+      "steam_build_id": "26783375",
+      "executable_cl": "Live-CL-165890",
+      "local_game_pak": "RogueCore-Windows.pak",
+      "local_mod_loader_detected_in_paks_folder": false,
+      "note": "Metadata from the user's report received 2026-11-20; no game archive copied."
+    },
+    "integration_research": {
+      "asset_manager_item_data": "/Script/RogueCore.ItemData",
+      "item_data_paths": [
+        "/Game/WeaponsNTools",
+        "/Game/GameElements/Drone",
+        "/Game/Unlocks/Items"
+      ],
+      "unlock_collection_class": "/Script/RogueCore.BXEUnlockCollection",
+      "unlock_collection_paths": [
+        "/Game/Unlocks/Collections",
+        "/Game/Unlocks/Collections/WeaponsToolsGear",
+        "/Game/Character/Reclaimers/BoosterDecks",
+        "/Game/GameElements/Abilities/DataAssets"
+      ],
+      "note": "Research snapshot from community reverse-engineering repository; verify against local build before authoring assets."
+    }
   },
   "weapons": [
     {
