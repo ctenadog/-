@@ -48,3 +48,10 @@ See [LOCAL_INSTALL_FINDINGS.md](docs/LOCAL_INSTALL_FINDINGS.md) and [WEAPON_INTE
 - [ ] Find an Update 3-compatible loader or a self-contained, permitted alternative suitable for Melty one-click install
 - [ ] Confirm whether Blueprint loader can register custom ItemData into the Reclaimer loadout/salvage system
 - [ ] Check Epic Launcher manifests / custom Unreal Engine installation paths; initial scan was limited to common paths
+
+
+## Engine discovery result (2026-11-20)
+- [x] Epic Games Launcher manifest search completed: no Unreal Engine installation was registered in the searched Epic manifests
+- [ ] Install the matching Unreal Engine 5.6.1 editor/build tools (not latest 5.9) after checking available disk space
+- [ ] Verify the editor and UnrealPak paths after installation
+- [ ] Obtain the Rogue Core Blueprint mod template from its publisher's official community channel, subject to access and license terms
