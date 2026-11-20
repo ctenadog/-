@@ -50,3 +50,7 @@ python tools/validate_weapon_sheet.py weapon_sheet.json --require-integration
 ## Credits and permissions
 
 All weapon names and gameplay concepts in this draft are original proposals. No third-party game assets, loader binaries or interface .uasset files are included. Final code/art/audio license and remix permissions remain to be decided by the creator. Third-party loader/interface files must be obtained from their publishers and redistributed only where their permissions explicitly allow it.
+
+
+## Latest local findings
+The user's diagnostic identifies build `26783375` / `Live-CL-165890` and the main game PAK. The package CSV was malformed and the log tail/editor-tool inventory is missing. See [local findings](docs/LOCAL_INSTALL_FINDINGS.md) and [weapon integration research](docs/WEAPON_INTEGRATION.md).
