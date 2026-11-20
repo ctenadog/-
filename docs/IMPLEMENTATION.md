@@ -52,3 +52,9 @@ All world-affecting actions (projectile spawn, hit registration, damage, status 
 ## Known design-only targets
 
 All values in `weapon_sheet.json` are first-pass targets. They are not vanilla-game measurements and are not claimed to be balanced. Reconcile them against actual game values before a gameplay build.
+
+
+## Engine installation required
+The user's PowerShell probe found no engine registered in Epic Games Launcher manifests. Use the matching Unreal Engine 5.6.1 installation for this game (community-verified game engine version), not the current latest 5.9 version. Epic documents choosing older releases from the version selector on Unreal Engine > Library. Once installed, verify `UnrealEditor.exe` and `UnrealPak.exe` paths. The game itself does not ship a complete Unreal Editor.
+
+The user's diagnostic report lists about 11.8 GB RAM; Epic currently recommends 32 GB for UE5 development, so editor usage may be memory-constrained.
